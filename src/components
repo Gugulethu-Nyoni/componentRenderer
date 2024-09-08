@@ -1,0 +1,4 @@
+<div>
+  <slot name="menu"></slot>
+  <slot></slot>
+</div>

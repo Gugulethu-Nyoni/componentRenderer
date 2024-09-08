@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Component Composition</title>
+  <script src="./ComponentRenderer.js" defer></script>
+</head>
+<body>
+
+<p id="some1"> 
+  1 2 3 4
+</p>
+
+<!-- PARENT COMPONENT -->
+<p id="target">
+  <slot name="menu"> 
+    My default text: Slotting hasn't worked! 
+  </slot>
+</p>
+
+<p id="some2"> 
+  blah blah 
+</p>
+
+<!-- CHILD COMPONENT -->
+<dynamic-component>
+  <template>
+    <ul slot="menu">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </template>
+</dynamic-component>
+
+</body>
+</html>
