@@ -1,34 +1,22 @@
-class ComponentRenderer extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-  }
-
-  connectedCallback() {
-    this.render();
-  }
-
-  async render() {
-    const template = this.querySelector('template');
-    if (template) {
+class TemplateRenderer {
+  static render() {
+    const templates = document.querySelectorAll('template');
+    templates.forEach(template => {
       const content = template.content.cloneNode(true);
-      const slots = content.querySelectorAll('[slot]');
-      
-      slots.forEach(slot => {
-        const slotName = slot.getAttribute('slot');
+      const customElements = content.querySelectorAll('[slot]');
+
+      customElements.forEach(element => {
+        const slotName = element.getAttribute('slot');
         const parentSlots = document.querySelectorAll(`slot[name="${slotName}"]`);
 
         parentSlots.forEach(parentSlot => {
-          // Remove the default text
           parentSlot.innerHTML = '';
-
-          // Append the slot content to the parent slot
-          parentSlot.appendChild(slot.cloneNode(true));
+          parentSlot.appendChild(element.cloneNode(true));
         });
       });
-    }
+    });
   }
 }
 
-// Define the custom element
-customElements.define('dynamic-component', ComponentRenderer);
+// Render the templates
+TemplateRenderer.render();
