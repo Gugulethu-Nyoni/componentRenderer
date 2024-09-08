@@ -8,6 +8,10 @@
 </head>
 <body>
 
+
+	<slot name="header">Page Header Rendering Din work </slot>
+
+
 <p id="some1"> 
   1 2 3 4
 </p>
@@ -33,6 +37,13 @@
     </ul>
   </template>
 </dynamic-component>
+
+
+	<header-component>
+		<template>
+			<h1 slot="header"> Page Header Rendering worked!</h1>
+		</template>
+	</header-component>
 
 </body>
 </html>
