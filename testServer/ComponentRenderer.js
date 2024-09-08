@@ -1,4 +1,4 @@
-class TemplateRenderer {
+class ComponentRenderer {
   static render() {
     const templates = document.querySelectorAll('template');
     templates.forEach(template => {
@@ -19,4 +19,4 @@ class TemplateRenderer {
 }
 
 // Render the templates
-TemplateRenderer.render();
+ComponentRenderer.render();
