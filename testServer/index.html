@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Component Composition</title>
   <script src="./ComponentRenderer.js" defer></script>
+
+  <style type="text/css">
+  	.main {color: red}
+  	.menu{ list-style-type: disc; }
+  </style>
 </head>
 <body>
 
@@ -12,15 +17,10 @@
 	<slot name="header">Page Header Rendering Din work </slot>
 
 
-<p id="some1"> 
-  1 2 3 4
-</p>
-
 <!-- PARENT COMPONENT -->
 <p id="target">
-  <slot name="menu"> 
-    My default text: Slotting hasn't worked! 
-  </slot>
+  <slot>Default slot content</slot>
+  <slot name="menu">Menu slot default content</slot>
 </p>
 
 <p id="some2"> 
@@ -28,20 +28,22 @@
 </p>
 
 <!-- CHILD COMPONENT -->
-<dynamic-component>
+<div>
   <template>
-    <ul slot="menu">
+    <ul slot="menu" class="menu">
       <li><a href="home.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <p>Default slot content from child</p>
   </template>
-</dynamic-component>
+</div>
+
 
 
 	<header-component>
 		<template>
-			<h1 slot="header"> Page Header Rendering worked!</h1>
+			<h1 slot="header" class="main"> Page Header Rendering worked!</h1>
 		</template>
 	</header-component>
 
